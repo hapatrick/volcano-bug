@@ -6,7 +6,10 @@ and then adds an annotation to the vcjob's metadata.
 
 The script waits 120s for all vcjobs to complete, and then deletes any vcjobs
 that do not have phase == 'Completed.' This is successful in creating the error
-about in about 5 to 15 vcjobs per 500.
+about in about 5 to 15 vcjobs per 500. Success rate of reproducing the bug seems
+to depend on the time gap between creating the vcjob and adding the annotation.
+This is hard-coded to 0.45 seconds in function create_job(). This value seems to
+maximize the occurrence of this condition in our cluster.
 
 To run:
 * pip install -r requirements.txt
